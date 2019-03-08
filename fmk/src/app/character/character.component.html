@@ -1,0 +1,16 @@
+<div class="character-card"
+[class.fuck]="character.state === State.fuck"
+[class.marry]="character.state === State.marry"
+[class.kill]="character.state === State.kill">
+  <div class="img-container">
+    <img [src]="character.imgSrc" alt="{{character.name}}">
+  </div>
+  <div class="character-body">
+    <span>{{character.name}}</span>
+    <div class="btn-group justify-content-around" role="group">
+      <button [class.active-btn-fuck]="character.state === State.fuck" (click)="onSelect(character, State.fuck)" type="button" class="btn fuck-btn"><i class="fas fa-venus-mars"></i> Fuck</button>
+      <button [class.active-btn-marry]="character.state === State.marry" (click)="onSelect(character, State.marry)" type="button" class="btn marry-btn"><i class="fas fa-heart"></i> Marry</button>
+      <button [class.active-btn-kill]="character.state === State.kill" (click)="onSelect(character, State.kill)"type="button" class="btn kill-btn"><i class="fas fa-skull"></i> Kill</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,167 @@
+$blue: #3F51B5;
+$red: #F44336;
+$pink: #E91E63;
+$purple: #9C27B0;
+
+@mixin transition($duration) {
+  -webkit-transition: all $duration linear;
+  -moz-transition: all $duration linear;
+  -o-transition: all $duration linear;
+  transition: all $duration linear;
+}
+
+@mixin border-triangle($color) {
+    border-color: transparent $color $color transparent;
+    opacity: 0.5;
+}
+
+@mixin border($color, $width: 2px, $style: solid) {
+  border-style: $style;
+  border-color: $color;
+  border-width: $width $width 0px $width;
+}
+
+@mixin top-icon($content , $color){
+  position: absolute;
+  z-index: 2;
+  top: -23px;
+  right: -27px;
+  font-family: "Font Awesome 5 Free";
+  content: $content;
+  color: $color;
+  font-weight: 900;
+  font-size: 54px;
+}
+
+img , .character-body , .btn-group , .character-card:before {
+  @include transition(0.2s);
+}
+
+.character-card {
+  position: relative;
+  margin-bottom: 16px;
+  .img-container {
+    position: relative;
+    top: 0;
+    right: 0;
+    padding-left: 16px;
+
+    img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      @include border($blue);
+    }
+  }
+
+  .character-body {
+    position: relative;
+    background-color: $blue;
+    padding: 10px 16px;
+    color: #fff;
+    font-size: 1.4em;
+    font-weight: 200;
+
+    &:after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      top: -16px;
+      width: 0px;
+      border: 8px solid;
+      @include border-triangle($blue);
+    }
+
+    span {
+      display: block;
+      font-weight: 200;
+    }
+
+    .btn-group {
+      margin: 2px 0px;
+      width: 100%;
+
+      .btn {
+        background-color: #f0f0f0;
+        position: relative;
+
+        &:hover{
+          transform: scale(1.05);
+        }
+      }
+
+      .active-btn-fuck , .active-btn-marry , .active-btn-kill{
+        transform: scale(1.05);
+      }
+
+      .fuck-btn:hover , .active-btn-fuck{
+        color: $red;
+      }
+
+      .marry-btn:hover , .active-btn-marry{
+        color: $pink;
+      }
+
+      .kill-btn:hover , .active-btn-kill{
+        color: $purple;
+      }
+    }
+
+  }
+}
+
+.fuck{
+
+  &:before {
+    @include top-icon("\f228",$red);
+  }
+  & .img-container img {
+    @include border($red);
+  }
+
+  .character-body{
+    background-color: $red;
+
+    &:after{
+      @include border-triangle($red);
+    }
+  }
+}
+
+.marry{
+
+  &:before {
+    @include top-icon("\f004",$pink);
+  }
+
+  & .img-container img {
+    @include border($pink);
+  }
+
+  .character-body{
+    background-color: $pink;
+
+    &:after{
+      @include border-triangle($pink);
+    }
+  }
+}
+
+.kill{
+
+  &:before {
+    @include top-icon("\f54c",$purple);
+  }
+
+  & .img-container img {
+    @include border($purple);
+  }
+
+  .character-body{
+    background-color: $purple;
+
+    &:after{
+      @include border-triangle($purple);
+    }
+  }
+}
