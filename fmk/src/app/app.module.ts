@@ -10,6 +10,9 @@ import { AdminComponent } from './admin/admin.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CharacterComponent } from './character/character.component';
 
+// Import ng-circle-progress
+import { NgCircleProgressModule } from 'ng-circle-progress';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,7 +26,21 @@ import { CharacterComponent } from './character/character.component';
     AppRoutingModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
+    NgCircleProgressModule.forRoot({
+      radius: 100,
+      outerStrokeWidth: 10,
+      innerStrokeWidth: 6,
+      maxPercent: 100,
+      responsive: true,
+      outerStrokeColor: "#78C000",
+      innerStrokeColor: "#C7E596",
+      animationDuration: 300,
+      renderOnClick: false,
+      subtitle: 'AGREED',
+      titleFontSize: '28',
+      subtitleFontSize: '14',
+    })
   ],
   providers: [],
   bootstrap: [AppComponent]

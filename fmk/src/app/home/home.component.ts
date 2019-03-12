@@ -16,12 +16,12 @@ export class HomeComponent implements OnInit {
 
   constructor(private characterSerive: CharacterService) { }
 
-  getCharacters(): void {
-    this.characterSerive.getCharacters(this.gender).subscribe(characters => this.characters = characters);
+  getCharacters(gender: Sex): void {
+    this.characterSerive.getCharacters(gender).subscribe(characters => this.characters = characters);
   }
 
   ngOnInit() {
-    this.getCharacters();
+    this.getCharacters(this.gender);
   }
 
 }

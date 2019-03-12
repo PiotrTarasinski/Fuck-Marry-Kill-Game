@@ -4,6 +4,11 @@
 [class.kill]="character.state === State.kill">
   <div class="img-container">
     <img [src]="character.imgSrc" alt="{{character.name}}">
+    <div class="result_container" *ngIf="character.state !== State.default">
+      <circle-progress
+        [percent]=character.agreedPercent
+      ></circle-progress>
+    </div>
   </div>
   <div class="character-body">
     <span>{{character.name}}</span>

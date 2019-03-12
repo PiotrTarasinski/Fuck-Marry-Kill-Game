@@ -52,6 +52,26 @@ img , .character-body , .btn-group , .character-card:before {
       height: 100%;
       @include border($blue);
     }
+
+    .result_container {
+      position: absolute;
+      top: 2px;
+      left: 17px;
+      width: calc(100% - 18px);
+      height: calc(100% - 2px);
+      padding: 24px 24px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(0,0,0,0.7);
+      animation-name: display_anim;
+      animation-duration: 0.2s;
+    }
+  }
+
+  @keyframes display_anim {
+    from {opacity: 0;}
+    to {opacity: 1;}
   }
 
   .character-body {
@@ -114,6 +134,8 @@ img , .character-body , .btn-group , .character-card:before {
 
   &:before {
     @include top-icon("\f228",$red);
+    animation-name: display_anim;
+    animation-duration: 0.4s;
   }
   & .img-container img {
     @include border($red);
@@ -132,6 +154,8 @@ img , .character-body , .btn-group , .character-card:before {
 
   &:before {
     @include top-icon("\f004",$pink);
+    animation-name: display_anim;
+    animation-duration: 0.4s;
   }
 
   & .img-container img {
@@ -151,6 +175,8 @@ img , .character-body , .btn-group , .character-card:before {
 
   &:before {
     @include top-icon("\f54c",$purple);
+    animation-name: display_anim;
+    animation-duration: 0.4s;
   }
 
   & .img-container img {
