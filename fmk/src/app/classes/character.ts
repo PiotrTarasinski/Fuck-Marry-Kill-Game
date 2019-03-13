@@ -22,7 +22,7 @@ export class Character {
     }
 }
 
-export class ICharacter {
+export interface ICharacter {
     id: number;
     name: string;
     imgSrc: string;

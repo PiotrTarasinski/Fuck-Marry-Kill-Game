@@ -2,7 +2,6 @@ import { Injectable } from '@angular/core';
 import { Character , Sex, State, ICharacter } from './classes/character';
 import { Observable, of } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
-import { catchError, map, tap } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
@@ -21,7 +20,8 @@ export class CharacterService {
   private charactersStroyLength = 15;
 
   getCharacters(sex: Sex): Observable<Character[]> {
-    this.http.get<ICharacter[]>(this.urlApi + 'get_characters.php').subscribe((res) => {
+    this.http.post<ICharacter[]>(this.urlApi + 'get_characters.php', { sex, charactersStory: this.charactersStory })
+    .subscribe((res) => {
       res.map((char) => {
         this.characters.push(new Character(char.id, char.name, char.imgSrc, char.sex, char.fuckVotes, char.marryVotes, char.killVotes));
         // add id of current characters to the story

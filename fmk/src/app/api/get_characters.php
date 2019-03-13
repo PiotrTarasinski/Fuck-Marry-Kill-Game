@@ -3,12 +3,19 @@
     header("Access-Control-Allow-Methods: PUT, GET, POST");
     header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
     $input = json_decode(file_get_contents('php://input'),true);
-
+    
+    $sex = $input["sex"];
+    $charactersStory = $input["charactersStory"];
+    if(empty($charactersStory)){
+        $charactersStory = 0;
+    } else {
+        $charactersStory = implode(",",$charactersStory);
+    }
+    
     require_once "data_base.php";
 
     $db = new db();
-    // $sql = "SELECT * FROM characters WHERE id NOT IN(1,2,3) ORDER BY RAND() LIMIT 3";
-    $sql = "SELECT * FROM characters WHERE 1 ORDER BY RAND() LIMIT 3";
+    $sql = "SELECT * FROM characters WHERE id NOT IN ($charactersStory) AND sex = '$sex' ORDER BY RAND() LIMIT 3";
     $characters = array();
     if($result = $db->query($sql)) {
         while($character = $result->fetch_assoc()) {
