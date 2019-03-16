@@ -33,6 +33,7 @@ export class CharacterService {
         }
       });
     });
+    this.charactersSelected = false;
     return of(this.characters);
   }
 
@@ -45,19 +46,21 @@ export class CharacterService {
       if (character !== selectedCharacter && character.state === state) {
         character.state = State.default;
       }
-
       // increment number of selected characters
       if (character.state !== State.default) {
         selectedCharactersNumber++;
       }
     });
-
     // check if all the characters are selected
     if (selectedCharactersNumber === 3) {
       this.charactersSelected = true;
     } else {
       this.charactersSelected = false;
     }
+  }
+
+  getCharactersSelected(): Observable<boolean> {
+    return of(this.charactersSelected);
   }
 
   constructor(private http: HttpClient) { }

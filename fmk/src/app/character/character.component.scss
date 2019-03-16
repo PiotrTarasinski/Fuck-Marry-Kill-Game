@@ -45,7 +45,7 @@ img , .character-body , .btn-group , .character-card:before {
     top: 0;
     right: 0;
     padding-left: 16px;
-
+    
     img {
       position: relative;
       width: 100%;
@@ -81,6 +81,7 @@ img , .character-body , .btn-group , .character-card:before {
     color: #fff;
     font-size: 1.4em;
     font-weight: 200;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.2);
 
     &:after {
       content: ' ';

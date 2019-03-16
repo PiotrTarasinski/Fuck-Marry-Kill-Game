@@ -1,5 +1,12 @@
-<div class="container-fluid">
+<div class="container">
     <img class="logo" src="../../assets/img/logo.png" alt="Fuck Marry Kill Game">
+    <div class="onoffswitch">
+        <input (click)="changeGender()" type="checkbox" class="onoffswitch-checkbox" id="changeGender" checked>
+        <label class="onoffswitch-label" for="changeGender">
+            <span class="onoffswitch-inner"></span>
+            <span class="onoffswitch-switch" [class.man_selected]="gender === Sex.man"></span>
+        </label>
+    </div>
     <div class="row align-items-center justify-content-center">
         <div class="col-md" *ngFor="let character of characters">
           <app-character [character]=character></app-character>

@@ -1,3 +1,8 @@
+$blue: #3F51B5;
+$red: #F44336;
+$pink: #E91E63;
+$purple: #9C27B0;
+
 .logo {
     width: 240px;
     max-width: 100%;
@@ -7,4 +12,72 @@
 
 .col-md {
     max-width: 380px;
+}
+
+.onoffswitch {
+    margin: 0px 0px 20px auto;
+    position: relative; width: 104px;
+    -webkit-user-select:none; -moz-user-select:none; -ms-user-select: none;
+}
+.onoffswitch-checkbox {
+    display: none;
+}
+.onoffswitch-label {
+    display: block; overflow: hidden; cursor: pointer;
+    border-radius: 20px;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+}
+.onoffswitch-inner {
+    display: block; width: 200%; margin-left: -100%;
+    transition: margin 0.3s ease-in 0s;
+}
+.onoffswitch-inner:before, .onoffswitch-inner:after {
+    display: block; float: left; width: 50%; height: 30px; padding: 0; line-height: 30px;
+    font-size: 14px; color: white; font-family: Trebuchet, Arial, sans-serif; font-weight: bold;
+    box-sizing: border-box;
+}
+.onoffswitch-inner:before {
+    content: "WOMAN";
+    padding-left: 10px;
+    background-color: #E91E63; color: #FFFFFF;
+}
+.onoffswitch-inner:after {
+    content: "MAN";
+    padding-right: 10px;
+    background-color: #3F51B5; color: #FFFFFF;
+    text-align: right;
+}
+.onoffswitch-switch {
+    display: block; width: 35px; margin: -2.5px;
+    background: #FFFFFF;
+    position: absolute; top: 0; bottom: 0;
+    box-shadow: inset 0 0 5px rgba(0,0,0,0.4);
+    right: 74px;
+    border-radius: 20px; 
+    transition: all 0.3s ease-in 0s; 
+    text-align: center;
+
+    &::after {
+        font-family: "Font Awesome 5 Free";
+        content: "\f222";
+        color: $blue;
+        font-weight: 900;
+        font-size: 22px;
+        transition: all 0.3s ease-in 0s; 
+    }
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-switch::before {
+    background-color: #F44336;
+}
+
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
+    margin-left: 0;
+}
+.onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
+    right: 0px; 
+    &::after {
+        content: "\f221";
+        color: $pink;
+    }
 }

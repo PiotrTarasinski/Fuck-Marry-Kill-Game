@@ -9,10 +9,14 @@ import { CharacterService } from '../character.service';
 })
 export class HomeComponent implements OnInit {
 
+  // reference to the Sex enum
+  Sex = Sex;
+  // boolean is true when all current characters are selected
+  private charactersSelected: boolean;
   // array of current characters
-  characters: Character[];
+  private characters: Character[];
   // selected gender
-  gender: Sex = Sex.woman;
+  private gender: Sex = Sex.woman;
 
   constructor(private characterSerive: CharacterService) { }
 
@@ -20,8 +24,21 @@ export class HomeComponent implements OnInit {
     this.characterSerive.getCharacters(gender).subscribe(characters => this.characters = characters);
   }
 
+  getCharactersSelected(): void {
+    this.characterSerive.getCharactersSelected().subscribe(charactersSelected => this.charactersSelected = charactersSelected);
+  }
+
+  changeGender(): void {
+    if (this.gender === Sex.woman) {
+      this.gender = Sex.man;
+    } else {
+      this.gender = Sex.woman;
+    }
+  }
+
   ngOnInit() {
     this.getCharacters(this.gender);
+    this.getCharactersSelected();
   }
 
 }
